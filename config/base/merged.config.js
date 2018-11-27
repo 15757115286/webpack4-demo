@@ -6,6 +6,10 @@ const baseConfig = {
     devServer:{
         host:'0.0.0.0',
         port:'3000'
+    },
+    multiples:{
+        htmlEntry:path.resolve(basePath,'src/pages/html'),
+        jsEntry:path.resolve(basePath,'src/pages/entryjs')
     }
 }
 let customConfig = {};
