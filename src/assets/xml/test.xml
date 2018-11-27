@@ -1,0 +1,6 @@
+<note>
+  <to>Mary</to>
+  <from note="test.note" xx="44">John</from>
+  <heading>Reminder</heading>
+  <body>Call Cindy on Tuesday</body>
+</note>

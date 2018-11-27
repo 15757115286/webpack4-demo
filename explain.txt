@@ -1,0 +1,13 @@
+1. webpack2以上，我们import xxx.json文件时候会自动使用json-loader，所以我们需要去掉webpack.config.js中对于.json文件的rules，不然可能导致错误
+使用 import menu from './portal/content/json/menu.json' 来导入我们的json文件内容
+
+2. 这里猜测只有webpack.config.js文件才会用node去运行，被node编译器执行。其他的文件只是当做静态资源被loader转译
+3. clean-webpack-plugin插件用于清理最终打包的文件的文件夹。 插件说明文档 ： https://www.npmjs.com/package/clean-webpack-plugin
+4. html-webpack-plugin插件用于自动根据html模板生成新的模板，其中自动引入打包后的script。说明文档：https://github.com/jantimon/html-webpack-plugin#options
+5. 如果在webpack4中使用tree shaking 必须遵从下面几点
+   1. 必须使用es2015中的import和export语法
+   2. 确保没有插件将import和export语法转化为CommonJS语法（babel插件可能会做这种操作）
+   3. 在package.json中添加sideEffects属性
+   4. 使用 production 模式来确保包括压缩和剔除无用代码的优化
+6. optimization.usedExports 不会生成未使用的代码，这个在tree shaking中会被使用到。在production模式中会自动开启这个功能，在development中则默认关闭，所以
+   如果我们想在development中来测试tree shaking，那么我们是要手动指定该配置项
