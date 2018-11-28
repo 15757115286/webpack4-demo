@@ -2,6 +2,7 @@ const path = require("path");
 const config = require("./merged.config");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 function resolve(...paths) {
   return path.resolve(config.basePath, ...paths);
 }
@@ -21,7 +22,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: resolve(config.template)
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from:resolve("src/assets"),
+      to:resolve("dist/assets")
+    }])
   ],
   resolve:{
     alias:{

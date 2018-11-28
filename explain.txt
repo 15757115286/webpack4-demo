@@ -14,3 +14,5 @@
 
 7. 如果我们构建的是单页应用，我们可以把assets文件夹以静态资源的方式复制到编译生成后的文件夹dist中（和angular相似）。此时我们在html中如果要使用assets
    文件夹内的资源，我们直接用/assets/xxx或者assets/xxx（这时候确保html与assets文件夹同级）就行了。因为打包过去以后assets是在服务器的顶级的。
+8. 在使用tree shaking的时候，我们在package.json中sideEffects中需要把css与scss类似的这种样式文件给列进去，不然这些样式会被忽略掉
+9. 我们可以使用copy-webpack-plugin来再打包的时候把静态的资源拷贝到我们构建的目标文件夹内。说明文档：https://www.npmjs.com/package/copy-webpack-plugin
