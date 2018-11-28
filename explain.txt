@@ -11,3 +11,6 @@
    4. 使用 production 模式来确保包括压缩和剔除无用代码的优化
 6. optimization.usedExports 不会生成未使用的代码，这个在tree shaking中会被使用到。在production模式中会自动开启这个功能，在development中则默认关闭，所以
    如果我们想在development中来测试tree shaking，那么我们是要手动指定该配置项
+
+7. 如果我们构建的是单页应用，我们可以把assets文件夹以静态资源的方式复制到编译生成后的文件夹dist中（和angular相似）。此时我们在html中如果要使用assets
+   文件夹内的资源，我们直接用/assets/xxx或者assets/xxx（这时候确保html与assets文件夹同级）就行了。因为打包过去以后assets是在服务器的顶级的。
